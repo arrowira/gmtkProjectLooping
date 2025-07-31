@@ -13,8 +13,21 @@ func _process(delta: float) -> void:
 		switchLead("hippie")
 	if Input.is_action_just_pressed("two"):
 		switchLead("rock")
+var bassGenre
+var leadGenre
+var drumsGenre
 
-
+func getGenreAmount(genre):
+	
+	var count = 0
+	if bassGenre==genre:
+		count+=1
+	if leadGenre==genre:
+		count+=1
+	if drumsGenre==genre:
+		count+=1
+	return count
+	
 func clearRecords(instrument):
 	match instrument:
 		"drums":
@@ -32,6 +45,7 @@ func clearRecords(instrument):
 			clearRecords("lead")
 			
 func switchDrums(genre):
+	drumsGenre=genre
 	clearRecords("drums")
 	$MusicManager.enableStem(genre,"drums")
 	match genre:
@@ -42,6 +56,7 @@ func switchDrums(genre):
 		"8bit":
 			$"drums/8bit".visible=true
 func switchBass(genre):
+	bassGenre=genre
 	clearRecords("bass")
 	$MusicManager.enableStem(genre,"bass")
 	for child in $bass.get_children():
@@ -54,6 +69,7 @@ func switchBass(genre):
 		"8bit":
 			$bass/"8bit".visible=true
 func switchLead(genre):
+	leadGenre=genre
 	clearRecords("lead")
 	$MusicManager.enableStem(genre,"lead")
 	for child in $lead.get_children():

@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccstgv7ks0lqd"]
+
+[ext_resource type="Script" path="res://dancer.gd" id="1_mubik"]
+[ext_resource type="Texture2D" uid="uid://b7bjoyi43760f" path="res://sprites/dancers/pixelDancerA.png" id="2_i3sl0"]
+[ext_resource type="Texture2D" uid="uid://cnhoj4jh6l1tl" path="res://sprites/dancers/pixelDancerB.png" id="2_ovshw"]
+
+[sub_resource type="Animation" id="Animation_2lqqd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("excitedDancer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("excitedDancer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_apksn"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_ei40y"]
+resource_name = "normalDance"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("excitedDancer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.31864, 7.46426, 0.31864, 7.46426),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -73), Vector2(0, 0), Vector2(0, -73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("excitedDancer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 7.72749, 1, 2.14355),
+"update": 0,
+"values": [0.0, 0.354302, 0.0, -0.349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvnc5"]
+_data = {
+"RESET": SubResource("Animation_2lqqd"),
+"idle": SubResource("Animation_apksn"),
+"normalDance": SubResource("Animation_ei40y")
+}
+
+[node name="pixelDancer" type="Node2D"]
+script = ExtResource("1_mubik")
+
+[node name="boredDancer" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ovshw")
+vframes = 2
+
+[node name="excitedDancer" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_i3sl0")
+vframes = 2
+frame = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pvnc5")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
