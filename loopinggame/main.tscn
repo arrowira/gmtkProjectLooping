@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://caw6yye164i2j"]
+
+[ext_resource type="PackedScene" uid="uid://dw1xgmwrceoh" path="res://musicManager.tscn" id="1_5i1i5"]
+[ext_resource type="PackedScene" uid="uid://bx5i1qo7il8lu" path="res://dj_station.tscn" id="2_1fi06"]
+[ext_resource type="PackedScene" uid="uid://dmm78udwif3pm" path="res://record.tscn" id="3_6xust"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="record" parent="." instance=ExtResource("3_6xust")]
+scale = Vector2(2, 2)
+
+[node name="Node2D" parent="." instance=ExtResource("1_5i1i5")]
+
+[node name="DjStation" parent="." instance=ExtResource("2_1fi06")]
+position = Vector2(30, 162)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 315)

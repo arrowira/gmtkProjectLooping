@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmm78udwif3pm"]
+
+[ext_resource type="Texture2D" uid="uid://b1deqsx56m701" path="res://sprites/rockDrumsRecord.png" id="1_bdmko"]
+[ext_resource type="Script" path="res://record.gd" id="1_w5to1"]
+
+[node name="record" type="Node2D"]
+script = ExtResource("1_w5to1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("1_bdmko")

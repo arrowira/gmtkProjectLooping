@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx5i1qo7il8lu"]
+
+[ext_resource type="Script" path="res://dj_station.gd" id="1_ghxr4"]
+[ext_resource type="Texture2D" uid="uid://ddahhlbdddmae" path="res://sprites/djPad.png" id="1_vc8j0"]
+[ext_resource type="PackedScene" uid="uid://dmm78udwif3pm" path="res://record.tscn" id="2_au606"]
+[ext_resource type="PackedScene" uid="uid://dw1xgmwrceoh" path="res://musicManager.tscn" id="2_nyut3"]
+[ext_resource type="Texture2D" uid="uid://ck6c0crbp171a" path="res://sprites/hippieLeadRecord.png" id="3_c0851"]
+[ext_resource type="Texture2D" uid="uid://dub2jie7rtnuh" path="res://sprites/rockLeadRecord.png" id="4_nxfgg"]
+[ext_resource type="Texture2D" uid="uid://dylejxsfkosi5" path="res://sprites/hippieDrumsRecord.png" id="4_wygbq"]
+[ext_resource type="Texture2D" uid="uid://c447ssqcd8fnm" path="res://sprites/rockBassRecord.png" id="5_qk8rr"]
+[ext_resource type="Texture2D" uid="uid://b0ciemn0xgnha" path="res://sprites/hippieBassRecord.png" id="6_djygs"]
+
+[node name="DjStation" type="Node2D"]
+script = ExtResource("1_ghxr4")
+
+[node name="MusicManager" parent="." instance=ExtResource("2_nyut3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 83)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_vc8j0")
+
+[node name="drums" type="Node2D" parent="."]
+position = Vector2(319, 449)
+
+[node name="rock" parent="drums" instance=ExtResource("2_au606")]
+visible = false
+
+[node name="hippie" parent="drums" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("4_wygbq")
+
+[node name="bass" type="Node2D" parent="."]
+position = Vector2(578, 448)
+
+[node name="rock" parent="bass" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("5_qk8rr")
+
+[node name="hippie" parent="bass" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("6_djygs")
+
+[node name="lead" type="Node2D" parent="."]
+position = Vector2(837, 448)
+
+[node name="hippie" parent="lead" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("3_c0851")
+
+[node name="rock" parent="lead" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("4_nxfgg")
