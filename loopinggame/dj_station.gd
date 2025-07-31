@@ -3,17 +3,18 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#switchDrums("rock")
-	#switchBass("hippie")
-	#switchLead("hippie")
-	#$MusicManager.silenceInstrument("drums")
-	#$MusicManager.silenceInstrument("lead")
-	#$MusicManager.silenceInstrument("bass")
+	switchDrums("rock")
+	switchBass("hippie")
+	switchLead("hippie")
+	
 	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("one"):
+		switchLead("hippie")
+	if Input.is_action_just_pressed("two"):
+		switchLead("rock")
+
+
 func clearRecords(instrument):
 	match instrument:
 		"drums":
@@ -32,6 +33,7 @@ func clearRecords(instrument):
 			
 func switchDrums(genre):
 	clearRecords("drums")
+	$MusicManager.enableStem(genre,"drums")
 	match genre:
 		"rock":
 			$drums/rock.visible=true
@@ -49,6 +51,7 @@ func switchBass(genre):
 			$bass/hippie.visible=true
 func switchLead(genre):
 	clearRecords("lead")
+	$MusicManager.enableStem(genre,"lead")
 	for child in $lead.get_children():
 		child.visible = false
 	match genre:
