@@ -4,7 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	switchDrums("rock")
-	switchBass("hippie")
+	switchBass("rock")
 	switchLead("hippie")
 	
 	pass
@@ -39,6 +39,8 @@ func switchDrums(genre):
 			$drums/rock.visible=true
 		"hippie":
 			$drums/hippie.visible=true
+		"8bit":
+			$"drums/8bit".visible=true
 func switchBass(genre):
 	clearRecords("bass")
 	$MusicManager.enableStem(genre,"bass")
@@ -49,6 +51,8 @@ func switchBass(genre):
 			$bass/rock.visible=true
 		"hippie":
 			$bass/hippie.visible=true
+		"8bit":
+			$bass/"8bit".visible=true
 func switchLead(genre):
 	clearRecords("lead")
 	$MusicManager.enableStem(genre,"lead")
@@ -59,3 +63,5 @@ func switchLead(genre):
 			$lead/rock.visible=true
 		"hippie":
 			$lead/hippie.visible=true
+		"8bit":
+			$lead/"8bit".visible=true

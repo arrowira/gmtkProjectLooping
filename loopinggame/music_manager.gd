@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
 	silenceInstrument("drums")
 	silenceInstrument("lead")
 	silenceInstrument("bass")
@@ -23,26 +24,30 @@ func silenceInstrument(instrument):
 			$rockLead.volume_db = zeroVolume
 			$"8bitLead".volume_db = zeroVolume
 func enableStem(genre,instrument):
+	silenceInstrument(instrument)
 	match genre:
 		"hippie":
 			match instrument:
 				"drums":
-					silenceInstrument("drums")
 					$hippieDrums.volume_db = 0
 				"bass":
-					silenceInstrument("bass")
 					$hippieChords.volume_db = 0
 				"lead":
-					silenceInstrument("lead")
 					$hippieLead.volume_db = 0
 		"rock":
 			match instrument:
 				"drums":
-					silenceInstrument("drums")
 					$rockDrums.volume_db = 0
 				"bass":
-					silenceInstrument("bass")
 					$rockBass.volume_db = 0
 				"lead":
-					silenceInstrument("lead")
 					$rockLead.volume_db = 0
+		"8bit":
+			match instrument:
+				"drums":
+					$"8bitDrums".volume_db = 0
+				"bass":
+					$"8bitBass".volume_db = 10
+				"lead":
+					$"8bitLead".volume_db = 0
+					

@@ -1,18 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://caw6yye164i2j"]
+[gd_scene load_steps=8 format=3 uid="uid://caw6yye164i2j"]
 
 [ext_resource type="PackedScene" uid="uid://dw1xgmwrceoh" path="res://musicManager.tscn" id="1_5i1i5"]
 [ext_resource type="PackedScene" uid="uid://bx5i1qo7il8lu" path="res://dj_station.tscn" id="2_1fi06"]
-[ext_resource type="PackedScene" uid="uid://dmm78udwif3pm" path="res://record.tscn" id="3_6xust"]
+[ext_resource type="PackedScene" uid="uid://cq4u34dbfmm6x" path="res://folder.tscn" id="4_k4s8d"]
+[ext_resource type="Texture2D" uid="uid://cokgnav7pcjeo" path="res://sprites/rockIcon.png" id="4_w637u"]
+[ext_resource type="Texture2D" uid="uid://bybex6j8jphnb" path="res://sprites/controller.png" id="5_er10v"]
+[ext_resource type="Texture2D" uid="uid://cfebo62g2px83" path="res://sprites/TieDie.webp" id="5_h642i"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3tmyf"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="record" parent="." instance=ExtResource("3_6xust")]
-scale = Vector2(2, 2)
+[node name="DjStation" parent="." instance=ExtResource("2_1fi06")]
+position = Vector2(25, 129)
+
+[node name="table" type="Sprite2D" parent="."]
+modulate = Color(0.309987, 0.250185, 0.200099, 1)
+z_index = -3
+position = Vector2(592, 622.5)
+scale = Vector2(1546, 311)
+texture = SubResource("CanvasTexture_3tmyf")
 
 [node name="Node2D" parent="." instance=ExtResource("1_5i1i5")]
 
-[node name="DjStation" parent="." instance=ExtResource("2_1fi06")]
-position = Vector2(30, 162)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(571, 315)
+
+[node name="rockFolder" parent="." instance=ExtResource("4_k4s8d")]
+position = Vector2(-54, 585)
+genre = "rock"
+
+[node name="RockIcon" type="Sprite2D" parent="rockFolder"]
+modulate = Color(0.720467, 0.720468, 0.720467, 1)
+position = Vector2(0, 33.5)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("4_w637u")
+
+[node name="technoFolder" parent="." instance=ExtResource("4_k4s8d")]
+z_index = -1
+position = Vector2(1054, 397)
+genre = "hippie"
+
+[node name="8bitFolder" parent="." instance=ExtResource("4_k4s8d")]
+z_index = -1
+position = Vector2(97, 412)
+genre = "8bit"
+
+[node name="RockIcon2" type="Sprite2D" parent="8bitFolder"]
+modulate = Color(0.720467, 0.720468, 0.720467, 1)
+position = Vector2(-1, 35)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_er10v")
+
+[node name="hippieFolder2" parent="." instance=ExtResource("4_k4s8d")]
+position = Vector2(1216, 581)
+genre = "hippie"
+
+[node name="TieDie" type="Sprite2D" parent="hippieFolder2"]
+modulate = Color(0.537011, 0.537011, 0.537011, 1)
+position = Vector2(1, 36.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_h642i")
