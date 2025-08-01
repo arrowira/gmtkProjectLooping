@@ -3,8 +3,13 @@ extends Node2D
 @export var Texture2: Texture2D
 var mainTexture: Texture2D
 @export var dancertype: String = "8bit"
+@export var midDanceName: String = "normalDance"
+var walkingIn = true
+var distFromCenter: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	distFromCenter = randf_range(-500,500)
+	$AnimationPlayer.play(midDanceName)
 	if randf_range(0,2)>1:
 		mainTexture = Texture1
 	else:
@@ -15,8 +20,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	print()
+func _physics_process(delta: float) -> void:
+	if walkingIn:
+		var posDif =get_parent().global_position.x-global_position.x
+		if posDif >distFromCenter:
+			position.x+=1
+		elif posDif <distFromCenter:
+			position.x-=1
 
 
 func _on_timer_timeout() -> void:
@@ -28,7 +38,7 @@ func _on_timer_timeout() -> void:
 	if danceStrength > 0:
 		$excitedDancer.visible=true
 		$boredDancer.visible=false
-		$AnimationPlayer.play("normalDance")
+		
 		#dance
 		pass
 	$Timer.start()
