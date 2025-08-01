@@ -4,10 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b7bjoyi43760f" path="res://sprites/dancers/pixelDancerA.png" id="2_i3sl0"]
 [ext_resource type="Texture2D" uid="uid://cnhoj4jh6l1tl" path="res://sprites/dancers/pixelDancerB.png" id="2_ovshw"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_088qj"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_isiki"]
-
 [sub_resource type="Animation" id="Animation_2lqqd"]
 length = 0.001
 tracks/0/type = "value"
@@ -74,18 +70,16 @@ _data = {
 "normalDance": SubResource("Animation_ei40y")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_088qj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_isiki"]
+
 [node name="pixelDancer" type="Node2D"]
+y_sort_enabled = true
+scale = Vector2(0.85, 0.85)
 script = ExtResource("1_mubik")
 Texture1 = ExtResource("2_i3sl0")
 Texture2 = ExtResource("2_ovshw")
-
-[node name="Sprite2D" type="Polygon2D" parent="."]
-material = SubResource("CanvasItemMaterial_088qj")
-position = Vector2(-10.3894, 88.1852)
-scale = Vector2(102.316, 42)
-color = Color(0.00784314, 0.0156863, 0.054902, 0.396078)
-texture = SubResource("CanvasTexture_isiki")
-polygon = PackedVector2Array(-0.563063, 0.00617284, -0.346847, -0.290123, 0.247748, -0.290123, 0.50226, 0.0465115, 0.265766, 0.376543, -0.364865, 0.376543)
 
 [node name="boredDancer" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -101,10 +95,31 @@ frame = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pvnc5")
 }
 
+[node name="exitTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="expirationTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Sprite2D" type="Polygon2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_088qj")
+position = Vector2(-10.3894, 88.1852)
+scale = Vector2(102.316, 42)
+color = Color(0.00784314, 0.0156863, 0.054902, 0.396078)
+texture = SubResource("CanvasTexture_isiki")
+polygon = PackedVector2Array(-0.563063, 0.00617284, -0.346847, -0.290123, 0.247748, -0.290123, 0.50226, 0.0465115, 0.265766, 0.376543, -0.364865, 0.376543)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="exitTimer" to="." method="_on_exit_timer_timeout"]
+[connection signal="timeout" from="expirationTimer" to="." method="_on_expiration_timer_timeout"]

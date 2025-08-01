@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjo0iryt0sln"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_efl3x"]
+
+[node name="mainMenu" type="Node2D"]
+script = ExtResource("1_efl3x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 282.0
+offset_bottom = 55.0
+text = "START
+"
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_button_button_down"]

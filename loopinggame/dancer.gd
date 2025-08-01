@@ -6,9 +6,10 @@ var mainTexture: Texture2D
 @export var midDanceName: String = "normalDance"
 var walkingIn = true
 var distFromCenter: float
+var leaving = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	distFromCenter = randf_range(-500,500)
+	distFromCenter = int(randf_range(-700,700))
 	$AnimationPlayer.play(midDanceName)
 	if randf_range(0,2)>1:
 		mainTexture = Texture1
@@ -23,22 +24,37 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if walkingIn:
 		var posDif =get_parent().global_position.x-global_position.x
-		if posDif >distFromCenter:
-			position.x+=1
-		elif posDif <distFromCenter:
-			position.x-=1
+		if posDif >distFromCenter+2:
+			position.x+=2
+		elif posDif <distFromCenter-2:
+			position.x-=2
+		else:
+			walkingIn=false
+	if leaving:
+		position.x-=2
 
 
 func _on_timer_timeout() -> void:
-	var danceStrength = get_parent().get_parent().get_node("DjStation").getGenreAmount(dancertype)
-	if danceStrength == 0:
-		$excitedDancer.visible=false
-		$boredDancer.visible=true
-		pass
-	if danceStrength > 0:
-		$excitedDancer.visible=true
-		$boredDancer.visible=false
-		
-		#dance
-		pass
-	$Timer.start()
+	if !leaving:
+		var danceStrength = get_parent().get_parent().get_node("DjStation").getGenreAmount(dancertype)
+		if danceStrength == 0:
+			$excitedDancer.visible=false
+			$boredDancer.visible=true
+			pass
+		if danceStrength > 0:
+			$excitedDancer.visible=true
+			$boredDancer.visible=false
+			
+			#dance
+			pass
+		$Timer.start()
+
+
+func _on_exit_timer_timeout() -> void:
+	print(dancertype)
+	$expirationTimer.start()
+	leaving = true
+
+
+func _on_expiration_timer_timeout() -> void:
+	queue_free()

@@ -7,6 +7,9 @@ func _ready() -> void:
 	silenceInstrument("drums")
 	silenceInstrument("lead")
 	silenceInstrument("bass")
+	await get_tree().create_timer(2).timeout
+	for child in get_children():
+		child.playing=true
 	
 var zeroVolume = -80
 func silenceInstrument(instrument):

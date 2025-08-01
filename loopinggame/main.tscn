@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://caw6yye164i2j"]
+[gd_scene load_steps=11 format=3 uid="uid://caw6yye164i2j"]
 
 [ext_resource type="PackedScene" uid="uid://dw1xgmwrceoh" path="res://musicManager.tscn" id="1_5i1i5"]
 [ext_resource type="PackedScene" uid="uid://bx5i1qo7il8lu" path="res://dj_station.tscn" id="2_1fi06"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cacuqj4g4nw1" path="res://sprites/robotIcon.png" id="5_c404l"]
 [ext_resource type="Texture2D" uid="uid://bybex6j8jphnb" path="res://sprites/controller.png" id="5_er10v"]
 [ext_resource type="Texture2D" uid="uid://cfebo62g2px83" path="res://sprites/TieDie.webp" id="5_h642i"]
-[ext_resource type="PackedScene" uid="uid://ccstgv7ks0lqd" path="res://8bitDancer.tscn" id="7_wb6sp"]
 [ext_resource type="Texture2D" uid="uid://cst0ykg4s3j6p" path="res://sprites/background.png" id="9_hbw58"]
-[ext_resource type="PackedScene" uid="uid://cn5wnvrb35phx" path="res://hippie.tscn" id="10_gv2uk"]
+[ext_resource type="Script" path="res://spawner.gd" id="10_b0iic"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3tmyf"]
 
@@ -74,22 +73,20 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_h642i")
 
 [node name="dancerManager" type="Node2D" parent="."]
+z_index = -100
 position = Vector2(574, 278)
 
-[node name="hippieDancer" parent="dancerManager" instance=ExtResource("10_gv2uk")]
-position = Vector2(-393, -102)
+[node name="Spawner" type="Node2D" parent="dancerManager"]
+position = Vector2(-869, -131)
+script = ExtResource("10_b0iic")
 
-[node name="pixelDancer" parent="dancerManager" instance=ExtResource("7_wb6sp")]
-position = Vector2(-251, -60)
-
-[node name="hippieDancer2" parent="dancerManager" instance=ExtResource("10_gv2uk")]
-position = Vector2(306, -97)
-
-[node name="pixelDancer2" parent="dancerManager" instance=ExtResource("7_wb6sp")]
-position = Vector2(532, -102)
+[node name="Timer" type="Timer" parent="dancerManager/Spawner"]
+wait_time = 0.6
 
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -20
+z_index = -300
 position = Vector2(567, 91)
 scale = Vector2(1.7375, 1.80556)
 texture = ExtResource("9_hbw58")
+
+[connection signal="timeout" from="dancerManager/Spawner/Timer" to="dancerManager/Spawner" method="_on_timer_timeout"]

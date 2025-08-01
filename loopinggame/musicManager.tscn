@@ -19,48 +19,36 @@ script = ExtResource("1_e20vc")
 
 [node name="8bitDrums" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_wfxat")
-autoplay = true
 
 [node name="8bitBass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_uckae")
-autoplay = true
 
 [node name="8bitLead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rif51")
-autoplay = true
 
 [node name="hippieDrums" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bkh5r")
-autoplay = true
 
 [node name="hippieChords" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_osvp1")
-autoplay = true
 
 [node name="hippieLead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_defgs")
-autoplay = true
 
 [node name="rockDrums" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_lgkvc")
-autoplay = true
 
 [node name="rockBass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hhppp")
-autoplay = true
 
 [node name="rockLead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_lx4dy")
-autoplay = true
 
 [node name="technoDrums" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_uujet")
-autoplay = true
 
 [node name="technoBass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_503j1")
-autoplay = true
 
 [node name="technoLead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_m8yc3")
-autoplay = true
