@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://caw6yye164i2j"]
+[gd_scene load_steps=11 format=3 uid="uid://caw6yye164i2j"]
 
 [ext_resource type="PackedScene" uid="uid://dw1xgmwrceoh" path="res://musicManager.tscn" id="1_5i1i5"]
 [ext_resource type="PackedScene" uid="uid://bx5i1qo7il8lu" path="res://dj_station.tscn" id="2_1fi06"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bybex6j8jphnb" path="res://sprites/controller.png" id="5_er10v"]
 [ext_resource type="Texture2D" uid="uid://cfebo62g2px83" path="res://sprites/TieDie.webp" id="5_h642i"]
 [ext_resource type="PackedScene" uid="uid://ccstgv7ks0lqd" path="res://dancer.tscn" id="7_wb6sp"]
+[ext_resource type="Texture2D" uid="uid://cst0ykg4s3j6p" path="res://sprites/background.png" id="9_hbw58"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3tmyf"]
 
@@ -77,3 +78,9 @@ position = Vector2(-55, 333)
 
 [node name="pixelDancer" parent="dancerManager" instance=ExtResource("7_wb6sp")]
 position = Vector2(572, 182)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(567, 91)
+scale = Vector2(1.7375, 1.80556)
+texture = ExtResource("9_hbw58")

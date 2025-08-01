@@ -83,7 +83,7 @@ Texture2 = ExtResource("2_ovshw")
 material = SubResource("CanvasItemMaterial_088qj")
 position = Vector2(-10.3894, 88.1852)
 scale = Vector2(102.316, 42)
-color = Color(0.0431373, 0.0862745, 0.184314, 0.227451)
+color = Color(0.00784314, 0.0156863, 0.054902, 0.396078)
 texture = SubResource("CanvasTexture_isiki")
 polygon = PackedVector2Array(-0.563063, 0.00617284, -0.346847, -0.290123, 0.247748, -0.290123, 0.50226, 0.0465115, 0.265766, 0.376543, -0.364865, 0.376543)
 

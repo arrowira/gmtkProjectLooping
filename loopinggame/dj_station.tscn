@@ -30,9 +30,10 @@ texture = ExtResource("1_vc8j0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(364, 328)
+position = Vector2(288, 328)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_c2h7b")
+flip_h = true
 
 [node name="drums" type="Node2D" parent="."]
 position = Vector2(319, 449)
@@ -54,9 +55,10 @@ textureImage = ExtResource("8_6vh36")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(618, 328)
+position = Vector2(545, 328)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_c2h7b")
+flip_h = true
 
 [node name="bass" type="Node2D" parent="."]
 position = Vector2(578, 448)
@@ -79,9 +81,10 @@ textureImage = ExtResource("12_0oyey")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(882, 328)
+position = Vector2(810, 328)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_c2h7b")
+flip_h = true
 
 [node name="lead" type="Node2D" parent="."]
 position = Vector2(837, 448)
