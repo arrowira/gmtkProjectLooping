@@ -8,11 +8,7 @@ func _ready() -> void:
 	switchLead("hippie")
 	
 	pass
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("one"):
-		switchLead("hippie")
-	if Input.is_action_just_pressed("two"):
-		switchLead("rock")
+
 var bassGenre
 var leadGenre
 var drumsGenre
@@ -55,6 +51,8 @@ func switchDrums(genre):
 			$drums/hippie.visible=true
 		"8bit":
 			$"drums/8bit".visible=true
+		"techno":
+			$drums/techno.visible=true
 func switchBass(genre):
 	bassGenre=genre
 	clearRecords("bass")
@@ -68,6 +66,8 @@ func switchBass(genre):
 			$bass/hippie.visible=true
 		"8bit":
 			$bass/"8bit".visible=true
+		"techno":
+			$bass/techno.visible=true
 func switchLead(genre):
 	leadGenre=genre
 	clearRecords("lead")
@@ -81,3 +81,5 @@ func switchLead(genre):
 			$lead/hippie.visible=true
 		"8bit":
 			$lead/"8bit".visible=true
+		"techno":
+			$lead/techno.visible=true

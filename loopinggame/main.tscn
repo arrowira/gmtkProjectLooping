@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bx5i1qo7il8lu" path="res://dj_station.tscn" id="2_1fi06"]
 [ext_resource type="PackedScene" uid="uid://cq4u34dbfmm6x" path="res://folder.tscn" id="4_k4s8d"]
 [ext_resource type="Texture2D" uid="uid://cokgnav7pcjeo" path="res://sprites/rockIcon.png" id="4_w637u"]
+[ext_resource type="Texture2D" uid="uid://cacuqj4g4nw1" path="res://sprites/robotIcon.png" id="5_c404l"]
 [ext_resource type="Texture2D" uid="uid://bybex6j8jphnb" path="res://sprites/controller.png" id="5_er10v"]
 [ext_resource type="Texture2D" uid="uid://cfebo62g2px83" path="res://sprites/TieDie.webp" id="5_h642i"]
 [ext_resource type="PackedScene" uid="uid://ccstgv7ks0lqd" path="res://dancer.tscn" id="7_wb6sp"]
-[ext_resource type="Texture2D" uid="uid://b7bjoyi43760f" path="res://sprites/dancers/pixelDancerA.png" id="8_1rhse"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3tmyf"]
 
@@ -41,7 +41,13 @@ texture = ExtResource("4_w637u")
 [node name="technoFolder" parent="." instance=ExtResource("4_k4s8d")]
 z_index = -1
 position = Vector2(1054, 397)
-genre = "hippie"
+genre = "techno"
+
+[node name="RobotIcon" type="Sprite2D" parent="technoFolder"]
+modulate = Color(0.617455, 0.617455, 0.617455, 1)
+position = Vector2(0, 32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_c404l")
 
 [node name="8bitFolder" parent="." instance=ExtResource("4_k4s8d")]
 z_index = -1
@@ -54,11 +60,11 @@ position = Vector2(-1, 35)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_er10v")
 
-[node name="hippieFolder2" parent="." instance=ExtResource("4_k4s8d")]
+[node name="hippieFolder" parent="." instance=ExtResource("4_k4s8d")]
 position = Vector2(1216, 581)
 genre = "hippie"
 
-[node name="TieDie" type="Sprite2D" parent="hippieFolder2"]
+[node name="TieDie" type="Sprite2D" parent="hippieFolder"]
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(1, 36.5)
 scale = Vector2(0.05, 0.05)
@@ -68,5 +74,6 @@ texture = ExtResource("5_h642i")
 
 [node name="Dancer" parent="dancerManager" instance=ExtResource("7_wb6sp")]
 position = Vector2(-55, 333)
-idleTexture = ExtResource("8_1rhse")
-danceTexture = ExtResource("8_1rhse")
+
+[node name="pixelDancer" parent="dancerManager" instance=ExtResource("7_wb6sp")]
+position = Vector2(572, 182)

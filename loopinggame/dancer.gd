@@ -1,11 +1,16 @@
 extends Node2D
-@export var idleTexture: Texture2D
-@export var danceTexture: Texture2D
+@export var Texture1: Texture2D
+@export var Texture2: Texture2D
+var mainTexture: Texture2D
 @export var dancertype: String = "8bit"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$boredDancer.texture = idleTexture
-	$excitedDancer.texture = danceTexture
+	if randf_range(0,2)>1:
+		mainTexture = Texture1
+	else:
+		mainTexture=Texture2
+	$boredDancer.texture = mainTexture
+	$excitedDancer.texture = mainTexture
 	$Timer.start()
 
 

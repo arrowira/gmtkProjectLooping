@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx5i1qo7il8lu"]
+[gd_scene load_steps=17 format=3 uid="uid://bx5i1qo7il8lu"]
 
 [ext_resource type="Script" path="res://dj_station.gd" id="1_ghxr4"]
 [ext_resource type="Texture2D" uid="uid://ddahhlbdddmae" path="res://sprites/djPad.png" id="1_vc8j0"]
@@ -11,8 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://daxagbabxcyxg" path="res://sprites/recordNeedle.png" id="6_c2h7b"]
 [ext_resource type="Texture2D" uid="uid://b0ciemn0xgnha" path="res://sprites/hippieBassRecord.png" id="6_djygs"]
 [ext_resource type="Texture2D" uid="uid://b05gx74wcl6k5" path="res://sprites/8bitDrumsRecord.png" id="7_v0gnx"]
+[ext_resource type="Texture2D" uid="uid://dbe3ery2ojkwj" path="res://sprites/TechnoDrumsRecord.png" id="8_6vh36"]
 [ext_resource type="Texture2D" uid="uid://bopvsmjdwm5i6" path="res://sprites/8bitBassRecord.png" id="10_rxpty"]
+[ext_resource type="Texture2D" uid="uid://duwt36lcve2xa" path="res://sprites/TechnoBassRecord.png" id="12_0oyey"]
 [ext_resource type="Texture2D" uid="uid://lbtkoqkdic6f" path="res://sprites/8bitLeadRecord.png" id="13_o3scj"]
+[ext_resource type="Texture2D" uid="uid://bj44xuaklk88o" path="res://sprites/TechnoLeadRecord.png" id="16_5rawh"]
 
 [node name="DjStation" type="Node2D"]
 script = ExtResource("1_ghxr4")
@@ -45,6 +48,10 @@ textureImage = ExtResource("4_wygbq")
 visible = false
 textureImage = ExtResource("7_v0gnx")
 
+[node name="techno" parent="drums" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("8_6vh36")
+
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(618, 328)
@@ -66,6 +73,10 @@ textureImage = ExtResource("6_djygs")
 visible = false
 textureImage = ExtResource("10_rxpty")
 
+[node name="techno" parent="bass" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("12_0oyey")
+
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(882, 328)
@@ -86,6 +97,10 @@ textureImage = ExtResource("4_nxfgg")
 [node name="8bit" parent="lead" instance=ExtResource("2_au606")]
 visible = false
 textureImage = ExtResource("13_o3scj")
+
+[node name="techno" parent="lead" instance=ExtResource("2_au606")]
+visible = false
+textureImage = ExtResource("16_5rawh")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 285.0
